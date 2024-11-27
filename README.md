@@ -12,7 +12,7 @@
 ### Installation
 
 ```
-pip install testit-adapter-pytest
+pip install pytest-testit-parametrize
 ```
 
 ## Usage
