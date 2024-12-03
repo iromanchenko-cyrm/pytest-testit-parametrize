@@ -1,12 +1,19 @@
 import testit_api_client
 from testit_api_client import ApiClient, Configuration
-from testit_api_client.apis import WorkItemsApi, ParametersApi
-from testit_api_client.model.api_v2_parameters_search_post_request import ApiV2ParametersSearchPostRequest
-from testit_api_client.model.create_parameter_request import CreateParameterRequest
-from testit_api_client.model.update_work_item_request import UpdateWorkItemRequest
-
-from testit_python_commons.client.client_configuration import ClientConfiguration
-from testit_python_commons.services.logger import adapter_logger as official_logger
+from testit_api_client.apis import ParametersApi, WorkItemsApi
+from testit_api_client.model.api_v2_parameters_search_post_request import (
+    ApiV2ParametersSearchPostRequest,
+)
+from testit_api_client.model.create_parameter_request import (
+    CreateParameterRequest,
+)
+from testit_api_client.model.update_work_item_request import (
+    UpdateWorkItemRequest,
+)
+from testit_python_commons.client import ClientConfiguration
+from testit_python_commons.services.logger import (
+    adapter_logger as official_logger,
+)
 
 from pytest_testit_parametrize.logger import Logger
 
@@ -17,9 +24,12 @@ class ApiClientWorker:
     def __init__(self, config: ClientConfiguration):
         api_client_config = self.__get_api_client_configuration(
             url=config.get_url(),
-            verify_ssl=config.get_cert_validation() != 'false',
-            proxy=config.get_proxy())
-        api_client = self.__get_api_client(api_client_config, config.get_private_token())
+            verify_ssl=config.get_cert_validation() != "false",
+            proxy=config.get_proxy(),
+        )
+        api_client = self.__get_api_client(
+            api_client_config, config.get_private_token()
+        )
 
         self.__work_items_api = WorkItemsApi(api_client=api_client)
         self.__parameters_api = ParametersApi(api_client=api_client)
@@ -27,7 +37,9 @@ class ApiClientWorker:
 
     @staticmethod
     @official_logger
-    def __get_api_client_configuration(url: str, verify_ssl: bool = True, proxy: str = None) -> Configuration:
+    def __get_api_client_configuration(
+        url: str, verify_ssl: bool = True, proxy: str = None
+    ) -> Configuration:
         api_client_configuration = Configuration(host=url)
         api_client_configuration.verify_ssl = verify_ssl
         api_client_configuration.proxy = proxy
@@ -39,8 +51,9 @@ class ApiClientWorker:
     def __get_api_client(api_client_config: Configuration, token: str) -> ApiClient:
         return ApiClient(
             configuration=api_client_config,
-            header_name='Authorization',
-            header_value='PrivateToken ' + token)
+            header_name="Authorization",
+            header_value="PrivateToken " + token,
+        )
 
     @official_logger
     def get_iterations(self, workitem_id):
@@ -48,9 +61,7 @@ class ApiClientWorker:
         try:
             api_response = self.__work_items_api.get_iterations(id=workitem_id)
         except testit_api_client.ApiException as e:
-            logger.error(
-                "Exception when calling WorkItemsApi->get_iterations: %s\n", e
-            )
+            logger.error("Exception when calling WorkItemsApi->get_iterations: %s\n", e)
 
         return api_response
 
