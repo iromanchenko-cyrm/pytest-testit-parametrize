@@ -23,6 +23,7 @@ def pytest_addoption(parser):
 @pytest.mark.tryfirst
 def pytest_cmdline_main(config):
     if config.option.flush_params or config.option.set_params:
+        config.option.set_adapter_mode = "2"
         listener = TmsListener(
             TmsPluginManager.get_adapter_manager(config.option),
             TmsPluginManager.get_parameter_manager(config.option),
