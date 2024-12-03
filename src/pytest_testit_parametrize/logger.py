@@ -9,7 +9,9 @@ from pytest_testit_parametrize.constants import PLUGIN_NAME
 class Logger:
     """Logger class"""
 
-    def __init__(self, logger_name: str, logger_base_name: str = PLUGIN_NAME, level: int = DEBUG):
+    def __init__(
+        self, logger_name: str, logger_base_name: str = PLUGIN_NAME, level: int = DEBUG
+    ):
         console_handler = StreamHandler(stdout)
         console_handler.setLevel(DEBUG)
 

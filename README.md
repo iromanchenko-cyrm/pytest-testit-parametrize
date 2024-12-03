@@ -1,9 +1,8 @@
 # pytest-testit-parametrize
-[![Release Status](https://img.shields.io/pypi/v/pytest-testit-parametrize.svg)](https://pypi.python.org/pypi/pytest-testit-parametrize)
-[![Python versions](https://img.shields.io/pypi/pyversions/pytest-testit-parametrize.svg)](https://pypi.org/project/pytest-testit-parametrize)
-[![Downloads](https://img.shields.io/pypi/dm/pytest-testit-parametrize?style=plastic)](https://pypi.python.org/pypi/pytest-testit-parametrize)
-[![GitHub contributors](https://img.shields.io/github/contributors/pytest-testit-parametrize?style=plastic)](https://github.com/pytest-testit-parametrize)
-[![See Build Status on GitHub Actions](https://github.com/iromanchenko-cyrm/pytest-testit-parametrize/actions/workflows/main.yml/badge.svg)](https://github.com/iromanchenko-cyrm/pytest-testit-parametrize/actions/workflows/main.yml)
+[![Release Status](https://img.shields.io/pypi/v/pytest-testit-parametrize.svg?style=plastic)](https://pypi.python.org/pypi/pytest-testit-parametrize)
+[![Python versions](https://img.shields.io/pypi/pyversions/pytest-testit-parametrize.svg?style=plastic)](https://pypi.org/project/pytest-testit-parametrize)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-testit-parametrize?style=plastic)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/iromanchenko-cyrm/pytest-testit-parametrize/total?style=plastic)
 
 ### A pytest plugin for uploading parameterized tests parameters into TMS TestIT
 

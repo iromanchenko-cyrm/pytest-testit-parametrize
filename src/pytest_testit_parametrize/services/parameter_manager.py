@@ -1,14 +1,20 @@
-from testit_python_commons.client import ClientConfiguration
+from testit_python_commons.client.api_client import (
+    ApiClientWorker as CommonApiClientWorker,
+)
 
-from pytest_testit_parametrize.client import ApiClientWorker
+from pytest_testit_parametrize.client import (
+    ApiClientWorker,
+    ClientConfiguration,
+)
 from pytest_testit_parametrize.logger import Logger
 
-logger = Logger("parameters_manager").get_logger()
+logger = Logger("parameter_manager").get_logger()
 
 
 class ParameterManager:
 
     def __init__(self, client_configuration: ClientConfiguration):
+        self.__common_api_client = CommonApiClientWorker(client_configuration)
         self.__api_client = ApiClientWorker(client_configuration)
 
     def flush_params(self, item):
@@ -52,7 +58,7 @@ class ParameterManager:
     @staticmethod
     def __get_workitem_ids(item):
         if not hasattr(item.function, "test_workitems_id"):
-            return
+            return None
         if "work_item_id" in item.callspec.params:
             return item.callspec.params["work_item_id"]
 
@@ -128,7 +134,9 @@ class ParameterManager:
             found_param_value = {}
             parameters = self.__api_client.parameters_search_groups(param_name)
             filtered_param = [
-                parameter for parameter in parameters if parameter.get("name") == param_name
+                parameter
+                for parameter in parameters
+                if parameter.get("name") == param_name
             ]
             if filtered_param:
                 found_param_value = {
@@ -137,8 +145,12 @@ class ParameterManager:
                     if value == param_value
                 }
             if not found_param_value:
-                created_parameter = self.__api_client.create_parameter(param_name, param_value)
-                found_param_value = {created_parameter["id"]: created_parameter["value"]}
+                created_parameter = self.__api_client.create_parameter(
+                    param_name, param_value
+                )
+                found_param_value = {
+                    created_parameter["id"]: created_parameter["value"]
+                }
             parameters_list.append({"id": (*found_param_value,)[0]})
 
         return parameters_list
