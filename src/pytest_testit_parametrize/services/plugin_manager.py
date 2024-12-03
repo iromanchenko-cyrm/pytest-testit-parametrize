@@ -6,6 +6,7 @@ from testit_python_commons.app_properties import AppProperties
 
 class TmsPluginManager:
     __plugin_manager = None
+    __adapter_manager = None
     __parameter_manager = None
     __logger = None
 
