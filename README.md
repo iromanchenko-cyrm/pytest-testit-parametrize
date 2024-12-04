@@ -2,7 +2,6 @@
 [![Release Status](https://img.shields.io/pypi/v/pytest-testit-parametrize.svg?style=plastic)](https://pypi.python.org/pypi/pytest-testit-parametrize)
 [![Python versions](https://img.shields.io/pypi/pyversions/pytest-testit-parametrize.svg?style=plastic)](https://pypi.org/project/pytest-testit-parametrize)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/pytest-testit-parametrize?style=plastic)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/iromanchenko-cyrm/pytest-testit-parametrize/total?style=plastic)
 
 ### A pytest plugin for uploading parameterized tests parameters into TMS TestIT
 
@@ -16,22 +15,25 @@ pip install pytest-testit-parametrize
 
 ## Usage
 
-#### Read parameters from collected pytest autotests and write them into Test IT test cases
+Read parameters from collected pytest autotests and write them into Test IT test cases
 ```
 pytest --testit-params-init
 ```
 
-#### Remove parameterization parameters from Test IT test cases related to collected autotests by pytest
+Remove parameterization parameters from Test IT test cases related to collected autotests by pytest
 ```
 pytest --testit-params-flush
 ```
 
-#### When the plugin finishes its work, the testrun will be interrupted, so no autotests will actually be run. 
-#### The plugin only affects autotests with the `@pytest.mark.parameterize` decorator. All others will be ignored
+You can use both flags at the same time.
+
+NOTE:
+When the plugin finishes its work the testrun will be interrupted, so no autotests will actually be run. 
+The plugin only affects autotests with the `@pytest.mark.parameterize` decorator. All others are ignored
 
 ## Configuration 
 
-For the plugin to work, you must have a completely identical configuration to what is required for [testit-adapter-pytest](https://github.com/testit-tms/adapters-python/tree/main/testit-adapter-pytest#file). 
+To have the plugin working you should have a completely identical configuration to what is required for [testit-adapter-pytest](https://github.com/testit-tms/adapters-python/tree/main/testit-adapter-pytest#file). 
 
 # Contributing
 

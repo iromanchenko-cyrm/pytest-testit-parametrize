@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytest-testit-parametrize"
 description = "A pytest plugin for uploading parameterized tests parameters into TMS TestIT"
-version = "0.1.4"
+version = "0.1.5"
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [
