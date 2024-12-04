@@ -1,0 +1,42 @@
+[build-system]
+requires = [
+  "setuptools>=61.0.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest-testit-parametrize"
+description = "A pytest plugin for uploading parameterized tests parameters into TMS TestIT"
+version = "0.1.5"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Ilya Romanchenko", email = "iromanchenko@it-vis.tech" },
+]
+maintainers = [
+    { name = "Ilya Romanchenko", email = "iromanchenko@it-vis.tech" },
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Framework :: Pytest",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "License :: OSI Approved :: Apache Software License",
+]
+dependencies = [
+    "pytest>=8.3.3",
+    "testit-python-commons==3.2.6"
+]
+[project.urls]
+Repository = "https://github.com/iromanchenko-cyrm/pytest-testit-parametrize"
+[project.entry-points.pytest11]
+testit-parametrize = "pytest_testit_parametrize.plugin"
